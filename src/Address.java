@@ -1,46 +1,49 @@
 public class Address {
-    String houseNo, street, city, state, zip;
+    private String houseNo, street, city, state, zip;
 
+// GETTERS
     public String getHouseNo() {
         return houseNo;
-    }
-
-    public void setHouseNo(String houseNo) {
-        this.houseNo = houseNo;
     }
 
     public String getStreet() {
         return street;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
     public String getCity() {
         return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
     }
 
     public String getState() {
         return state;
     }
 
-    public void setState(String state) {
-        this.state = state;
-    }
-
     public String getZip() {
         return zip;
+    }
+
+// Setters
+    public void setHouseNo(String houseNo) {
+        this.houseNo = houseNo;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public void setZip(String zip) {
         this.zip = zip;
     }
 
+// METHODS
     @Override
     public String toString() {
         return houseNo + " " +street+ "\n"+ city + " "+street + "\n"+city+state+"\n"+zip;
