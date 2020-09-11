@@ -3,7 +3,7 @@ public interface User {
     abstract String generateId();
     abstract String setId(String id);
     abstract String getName();
-    abstract String setName();
+    abstract String setName(String name);
     abstract Address getAddress();
-    abstract Address setAddress();
+    abstract Address setAddress(Address address);
 }

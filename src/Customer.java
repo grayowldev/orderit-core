@@ -15,6 +15,7 @@ public class Customer implements User{
         return null;
     }
 
+
     @Override
     public String setId(String id) {
         this.id =id;
@@ -26,9 +27,21 @@ public class Customer implements User{
         return this.name;
     }
 
+    @Override
+    public String setName(String name) {
+        this.name = name;
+        return this.name;
+    }
+
 
     @Override
     public Address getAddress() {
+        return this.address;
+    }
+
+    @Override
+    public Address setAddress(Address address) {
+        this.address = address;
         return this.address;
     }
 
