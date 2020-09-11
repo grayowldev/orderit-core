@@ -1,3 +1,5 @@
+package biz.orderit.orderit.pojo;
+
 public class Address {
     private String houseNo, street, city, state, zip;
 

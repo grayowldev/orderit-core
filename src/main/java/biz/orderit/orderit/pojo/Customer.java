@@ -1,3 +1,5 @@
+package biz.orderit.orderit.pojo;
+
 public class Customer implements User{
     private String id, name;
     private Address address;

@@ -1,3 +1,5 @@
+package biz.orderit.orderit.pojo;
+
 public interface User {
     abstract String getId();
     abstract String generateId();

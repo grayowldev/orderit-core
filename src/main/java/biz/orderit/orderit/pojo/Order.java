@@ -1,3 +1,5 @@
+package biz.orderit.orderit.pojo;
+
 import java.util.Date;
 
 public class Order {
