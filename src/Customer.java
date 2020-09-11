@@ -1,6 +1,5 @@
-
 public class Customer implements User{
-    private String id,name;
+    private String id, name;
     private Address address;
 
 // GETTERS

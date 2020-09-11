@@ -1,5 +1,4 @@
 public class Retailer implements User{
-
     private String id, name;
     private Address address;
 
@@ -48,10 +47,21 @@ public class Retailer implements User{
         return address;
     }
 
-    // This generates the ID that........
     @Override
     public String generateId() {
         return null;
     }
 
 }
+
+
+
+
+/*
+    Jonards Temporary Notes:
+        If a customer wants to order a drink from a coffee shop (Retailer/Restaurant),
+        The app will display the [name] of the restaurant on the front, along with the
+        address.
+        Each restaurant will have a unique ID because that is how each restaurant will be stored
+        in the database. Think about it. A starbucks in Jersey City is different from the Starbucks in Union.
+ */
