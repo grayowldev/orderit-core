@@ -1,7 +1,13 @@
 package biz.orderit.orderit.pojo;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
 public class Customer implements User{
-    private String id, name;
+    @Id
+    private String id;
+    private String name;
     private Address address;
 
 // GETTERS
@@ -51,5 +57,12 @@ public class Customer implements User{
         this.address = address;
     }
 
-
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", address=" + address +
+                '}';
+    }
 }
