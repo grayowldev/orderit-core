@@ -5,6 +5,7 @@ import biz.orderit.orderit.repository.RestaurantAuthRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.Optional;
 
 @Service
@@ -31,8 +32,12 @@ public class AuthService {
     }
 
     //TODO
-    public Optional<RestaurantAuth> getRestaurantUser(RestaurantAuth restaurantAuth){
-        return restaurantAuthRepository.findAll(restaurantAuth);
+    public String getRestaurantUser(RestaurantAuth restaurantAuth){
+        Optional<RestaurantAuth> theRestaurant = restaurantAuthRepository.findRestaurantAuthByEmailAndAndPassword(restaurantAuth.getEmail(), restaurantAuth.getPassword());
+        if(theRestaurant.isEmpty())
+            return null;
+        else
+            return theRestaurant.get().getId();
     }
 
 

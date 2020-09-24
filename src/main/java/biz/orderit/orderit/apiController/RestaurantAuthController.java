@@ -19,6 +19,15 @@ public class RestaurantAuthController {
     public String createRestaurant(@RequestBody RestaurantAuth restaurantAuth){
         System.out.println(restaurantAuth.getEmail());
         return authService.createRestaurantUser(restaurantAuth);
-
     }
+
+    @PostMapping("/login/restaurant")
+    public String loginRestaurant(@RequestBody RestaurantAuth restaurantAuth){
+        System.out.println(restaurantAuth.getId());
+        System.out.println(restaurantAuth.getEmail());
+        System.out.println(restaurantAuth.getPassword());
+        return authService.getRestaurantUser(restaurantAuth);
+    }
+
+
 }

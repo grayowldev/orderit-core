@@ -4,6 +4,7 @@ import biz.orderit.orderit.pojo.Address;
 import biz.orderit.orderit.pojo.Customer;
 import biz.orderit.orderit.pojo.RestaurantAuth;
 import biz.orderit.orderit.repository.CustomerRepository;
+import biz.orderit.orderit.repository.RestaurantAuthRepository;
 import biz.orderit.orderit.sevice.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -11,12 +12,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootApplication
 public class OrderitCoreApplication implements CommandLineRunner {
 
     @Autowired
     private CustomerRepository customerRepository;
+
+    @Autowired
+    private RestaurantAuthRepository restaurantAuthRepository;
 
     @Autowired
     private AuthService authService;
@@ -46,5 +51,19 @@ public class OrderitCoreApplication implements CommandLineRunner {
         System.out.println(s);
 
 
+
+
+        // ______________________________________________
+        System.out.println("\n");
+        Optional<RestaurantAuth> name = restaurantAuthRepository.findRestaurantAuthById("877393");
+        System.out.println(name.toString());
+
+        // ______________________________________________
+        System.out.println("\n");
+        Optional<RestaurantAuth> name2 = restaurantAuthRepository.findRestaurantAuthByEmailAndAndPassword("email@email.com", "password123456");
+        System.out.println(name2);
+        System.out.println(name2.toString());
+        if(name2.isEmpty())
+            System.out.println("this is empty");
     }
 }

@@ -7,9 +7,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class RestaurantAuth implements Auth {
 
     @Id
-    String id;
-    String email;
-    String password;
+    private String id;
+    private String email;
+    private String password;
 
     public String getId() {
         return id;
@@ -39,6 +39,15 @@ public class RestaurantAuth implements Auth {
         this.id = id;
         this.email = email;
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "RestaurantAuth{" +
+                "id='" + id + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 
     public RestaurantAuth() {
