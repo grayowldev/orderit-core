@@ -1,0 +1,12 @@
+/Users/grayowl/Work/orderit-core/src/main/java/biz/orderit/orderit/pojo/Order.java
+/Users/grayowl/Work/orderit-core/src/main/java/biz/orderit/orderit/apiController/RestaurantAuthController.java
+/Users/grayowl/Work/orderit-core/src/main/java/biz/orderit/orderit/pojo/RestaurantAuth.java
+/Users/grayowl/Work/orderit-core/src/main/java/biz/orderit/orderit/pojo/Customer.java
+/Users/grayowl/Work/orderit-core/src/main/java/biz/orderit/orderit/repository/CustomerRepository.java
+/Users/grayowl/Work/orderit-core/src/main/java/biz/orderit/orderit/pojo/Auth.java
+/Users/grayowl/Work/orderit-core/src/main/java/biz/orderit/orderit/pojo/User.java
+/Users/grayowl/Work/orderit-core/src/main/java/biz/orderit/orderit/OrderitCoreApplication.java
+/Users/grayowl/Work/orderit-core/src/main/java/biz/orderit/orderit/sevice/AuthService.java
+/Users/grayowl/Work/orderit-core/src/main/java/biz/orderit/orderit/pojo/Retailer.java
+/Users/grayowl/Work/orderit-core/src/main/java/biz/orderit/orderit/repository/RestaurantAuthRepository.java
+/Users/grayowl/Work/orderit-core/src/main/java/biz/orderit/orderit/pojo/Address.java
