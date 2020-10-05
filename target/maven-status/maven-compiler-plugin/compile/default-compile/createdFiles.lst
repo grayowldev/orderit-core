@@ -1,0 +1,12 @@
+biz/orderit/orderit/pojo/Retailer.class
+biz/orderit/orderit/apiController/RestaurantAuthController.class
+biz/orderit/orderit/repository/RestaurantAuthRepository.class
+biz/orderit/orderit/OrderitCoreApplication.class
+biz/orderit/orderit/repository/CustomerRepository.class
+biz/orderit/orderit/sevice/AuthService.class
+biz/orderit/orderit/pojo/Order.class
+biz/orderit/orderit/pojo/Auth.class
+biz/orderit/orderit/pojo/User.class
+biz/orderit/orderit/pojo/RestaurantAuth.class
+biz/orderit/orderit/pojo/Customer.class
+biz/orderit/orderit/pojo/Address.class
