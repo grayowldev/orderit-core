@@ -1,8 +1,14 @@
 package biz.orderit.orderit.pojo;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.HashMap;
 
+@Document
 public class Dish {
+
+    @Id
     String id;
     String name, description,image,category,originCategory,origin;
     Double price;
@@ -11,8 +17,7 @@ public class Dish {
     public Dish() {
     }
 
-    public Dish(String id, String name, String description, Double price) {
-        this.id = id;
+    public Dish(String name, String description, Double price) {
         this.name = name;
         this.description = description;
         this.price = price;

@@ -1,18 +1,24 @@
 package biz.orderit.orderit.pojo;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.ArrayList;
 import java.util.List;
 
+@Document
 public class MenuCategory {
-    String id,name;
+    @Id
+    String id;
+    String name;
     List<Dish> dishList;
 
     public MenuCategory() {
     }
 
-    public MenuCategory(String id, String name, List<Dish> dishList) {
-        this.id = id;
+    public MenuCategory(String name) {
         this.name = name;
-        this.dishList = dishList;
+        this.dishList = new ArrayList<Dish>();
     }
 
     public String getId() {
@@ -37,5 +43,9 @@ public class MenuCategory {
 
     public void setDishList(List<Dish> dishList) {
         this.dishList = dishList;
+    }
+
+    public void addDish(Dish dish){
+        dishList.add(dish);
     }
 }
