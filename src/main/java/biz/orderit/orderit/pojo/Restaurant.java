@@ -10,7 +10,7 @@ public class Restaurant {
     private String name;
     // private String description
     private Address address;
-    // private Menu menu;
+     private Menu menu;
 
 
 
@@ -18,6 +18,7 @@ public class Restaurant {
         this.id = id;
         this.name = name;
         this.address = address;
+        menu = new Menu();
     }
 
     public Restaurant(){ }
@@ -44,6 +45,14 @@ public class Restaurant {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 
     @Override

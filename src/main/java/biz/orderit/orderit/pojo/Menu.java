@@ -11,6 +11,7 @@ public class Menu {
 
     @Id
     String id;
+
     List<MenuCategory> categories;
 
     public Menu() {
@@ -35,5 +36,13 @@ public class Menu {
 
     public void addMenuCategory(MenuCategory category){
         categories.add(category);
+    }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "id='" + id + '\'' +
+                ", categories=" + categories +
+                '}';
     }
 }

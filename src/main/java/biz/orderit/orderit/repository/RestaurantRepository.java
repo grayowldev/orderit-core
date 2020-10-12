@@ -1,5 +1,6 @@
 package biz.orderit.orderit.repository;
 
+import biz.orderit.orderit.pojo.MenuCategory;
 import biz.orderit.orderit.pojo.Restaurant;
 import org.springframework.data.mongodb.repository.MongoRepository;
 

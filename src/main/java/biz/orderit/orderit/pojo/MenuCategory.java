@@ -48,4 +48,13 @@ public class MenuCategory {
     public void addDish(Dish dish){
         dishList.add(dish);
     }
+
+    @Override
+    public String toString() {
+        return "MenuCategory{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", dishList=" + dishList +
+                '}';
+    }
 }
