@@ -14,12 +14,12 @@ public class MenuController {
     }
 
     @PostMapping("/{restaurantId}/{categoryId}")
-    public ResponseEntity<String> addDishByCategory(@PathVariable("restaurantId") String restaurantIdn,@PathVariable("categoryId") String categoryId, @RequestBody Dish dish){
+    public ResponseEntity<String> addDishByCategory(@PathVariable("restaurantId") String restaurantId,@PathVariable("categoryId") String categoryId, @RequestBody Dish dish){
         return null;
     }
 
     @PutMapping("/{restaurantId}/{categoryId}")
-    public ResponseEntity<String> updateDishByCategory(@PathVariable("restaurantId") String restaurantIdn,@PathVariable("categoryId") String categoryId, @RequestBody Dish dish){
+    public ResponseEntity<String> updateDishByCategory(@PathVariable("restaurantId") String restaurantId,@PathVariable("categoryId") String categoryId, @RequestBody Dish dish){
         return null;
     }
 
