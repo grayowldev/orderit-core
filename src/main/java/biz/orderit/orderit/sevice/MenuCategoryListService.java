@@ -34,4 +34,8 @@ public class MenuCategoryListService {
         return menuCategoryListRepository.findMenuCategoryListsByRestaurantId(restaurantId);
     }
 
+    // TODO: 10/19/20 Add delete category
+
+    // TODO: 10/19/20 Update category in list
+
 }
