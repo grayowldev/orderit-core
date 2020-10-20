@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/menu")
 public class MenuController {
 
-    // return responseEntity : A list of objects
+    // return responseEntity : A list of menu category objects - getMenuByRestaurantId() from service
     @Autowired
     private MenuService menuService;
     @GetMapping("/{restaurantId}")
@@ -25,6 +25,12 @@ public class MenuController {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
+
+    //TODO addMenu - Name: Abhimanyu
+
+    //TODO deleteMenuById - Name: Abhimanyu
+
+    //TODO updateMenuById - Name: Abhimanyu
 
     // return
     @PostMapping("/{restaurantId}/{categoryId}")
