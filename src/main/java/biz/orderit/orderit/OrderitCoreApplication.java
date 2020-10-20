@@ -1,11 +1,9 @@
 package biz.orderit.orderit;
 
 import biz.orderit.orderit.pojo.*;
-import biz.orderit.orderit.repository.CustomerRepository;
-import biz.orderit.orderit.repository.MenuCategoryListRepository;
-import biz.orderit.orderit.repository.RestaurantAuthRepository;
-import biz.orderit.orderit.repository.RestaurantRepository;
+import biz.orderit.orderit.repository.*;
 import biz.orderit.orderit.sevice.AuthService;
+import biz.orderit.orderit.sevice.CartService;
 import biz.orderit.orderit.sevice.MenuCategoryListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -36,6 +34,12 @@ public class OrderitCoreApplication implements CommandLineRunner {
 
     @Autowired
     private MenuCategoryListService menuCategoryListService;
+
+    @Autowired
+    private CartService cartService;
+
+    @Autowired
+    private CartRepository cartRepository;
 
 
     public static void main(String[] args) {
@@ -83,6 +87,29 @@ public class OrderitCoreApplication implements CommandLineRunner {
 
         ziggs.setMenu(menu);
         restaurantRepository.save(ziggs);
+
+
+        // _____________________________________
+        // _____________________________________
+        // _____________________________________
+
+        // Since we want to test our cart, lets create a cart and add a dish to it
+        Cart myCart = new Cart("12345", "54321", 0.00);
+        List<Dish> testMyDish = new ArrayList<Dish>();
+        testMyDish.add(dish1);
+        myCart.setDishList(testMyDish);
+        // Now we want to save this cart to our repository - so it technically saves to the MongoDB
+        cartRepository.save(myCart);
+        // Then in order to display the cart (because we want to see if its working)
+        System.out.println(cartService.getCartByCustomerId("54321"));
+
+
+        Dish dish2 = new Dish("Hamburger", "this is with lettuce tomato and no burgers actually. Ha.", 8.00);
+        System.out.println(cartService.addDishToCartByCustomerId("54321", dish2));
+        // _____________________________________
+        // _____________________________________
+        // _____________________________________
+
 //
 //        Restaurant restaurant = new Restaurant("1","Joes",new Address());
 //        restaurant.setMenu(menu);

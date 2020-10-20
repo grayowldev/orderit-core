@@ -12,6 +12,7 @@ public class Dish {
     String id;
     String name, description,image,category,originCategory,origin;
     Double price;
+    Integer quantity;
     HashMap<String,Double> options;
 
     public Dish() {
@@ -85,6 +86,14 @@ public class Dish {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public HashMap<String, Double> getOptions() {
