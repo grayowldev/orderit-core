@@ -10,9 +10,7 @@ public class Restaurant {
     private String name;
     // private String description
     private Address address;
-     private Menu menu;
-
-
+    private Menu menu;
 
     public Restaurant(String id, String name, Address address) {
         this.id = id;

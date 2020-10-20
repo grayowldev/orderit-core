@@ -16,8 +16,9 @@ public class MenuCategoryListService {
     @Autowired
     MenuCategoryListRepository menuCategoryListRepository;
 
-    // TODO: 10/18/20
     public String addCategoryToList(MenuCategoryList menuCategoryList){
+        // Optional - when mongoDB doesn't find a record (so it doesn't break)
+        //TODO need to ignore case / compare both values by lowercase
         Optional<MenuCategoryList> category =  menuCategoryListRepository.findMenuCategoryListByRestaurantIdAndAndName(menuCategoryList.getRestaurantId(),menuCategoryList.getName());
         if (category.isEmpty()){
             menuCategoryListRepository.save(menuCategoryList);
@@ -25,11 +26,8 @@ public class MenuCategoryListService {
         } else {
             return "category in list";
         }
-
-
     }
 
-    // TODO: 10/18/20
     public List<MenuCategoryList> getCategoryListByRestaurantId(String restaurantId){
         return  menuCategoryListRepository.findMenuCategoryListsByRestaurantId(restaurantId);
     }

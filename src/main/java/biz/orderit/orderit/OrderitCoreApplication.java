@@ -48,8 +48,6 @@ public class OrderitCoreApplication implements CommandLineRunner {
         // Generating Sample Restaurant
 
         Restaurant ziggs = new Restaurant("1","Zigg's",new Address("14","JFK Blvd","New York","NY","10001"));
-        restaurantRepository.save(ziggs);
-
 
         // Add sample category list
 
@@ -67,26 +65,24 @@ public class OrderitCoreApplication implements CommandLineRunner {
         }
 
 
-//
-//
-//
-//
-//        Dish dish1 = new Dish("No.1 Shoyu",
-//                "classic chicken broth, shoyu tare, kakuni (pork belly), cabbage, chives, scallions, black garlic oil",
-//                13.00);
-//        MenuCategory cat = new MenuCategory("RAMEN BOWL $13");
-//        MenuCategory cat2 = new MenuCategory("Category 2");
-//        MenuCategory cat3 = new MenuCategory("Category 3");
-//
-//        cat.addDish(dish1);
-//        cat2.addDish(dish1);
-//        cat3.addDish(dish1);
-//
-//
-//        Menu menu = new Menu();
-//        menu.addMenuCategory(cat);
-//        menu.addMenuCategory(cat2);
-//        menu.addMenuCategory(cat3);
+        Dish dish1 = new Dish("No.1 Shoyu",
+                "classic chicken broth, shoyu tare, kakuni (pork belly), cabbage, chives, scallions, black garlic oil",
+                13.00);
+        MenuCategory cat = new MenuCategory("RAMEN BOWL $13");
+        MenuCategory cat2 = new MenuCategory("Category 2");
+        MenuCategory cat3 = new MenuCategory("Category 3");
+
+        cat.addDish(dish1);
+        cat2.addDish(dish1);
+        cat3.addDish(dish1);
+
+        Menu menu = new Menu(ziggs.getId());
+        menu.addMenuCategory(cat);
+        menu.addMenuCategory(cat2);
+        menu.addMenuCategory(cat3);
+
+        ziggs.setMenu(menu);
+        restaurantRepository.save(ziggs);
 //
 //        Restaurant restaurant = new Restaurant("1","Joes",new Address());
 //        restaurant.setMenu(menu);

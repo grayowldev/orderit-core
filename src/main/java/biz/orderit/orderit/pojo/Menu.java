@@ -10,11 +10,16 @@ import java.util.List;
 public class Menu {
 
     @Id
-    String id;
+    String id; // same as restaurant id
 
     List<MenuCategory> categories;
 
     public Menu() {
+        categories = new ArrayList<MenuCategory>();
+    }
+
+    public Menu(String id){
+        this.id = id;
         categories = new ArrayList<MenuCategory>();
     }
 

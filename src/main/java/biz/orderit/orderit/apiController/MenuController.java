@@ -1,8 +1,11 @@
 package biz.orderit.orderit.apiController;
 
 import biz.orderit.orderit.pojo.Dish;
+import biz.orderit.orderit.pojo.Menu;
 import biz.orderit.orderit.sevice.MenuCategoryListService;
+import biz.orderit.orderit.sevice.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,13 +13,20 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/menu")
 public class MenuController {
 
-
-
+    // return responseEntity : A list of objects
+    @Autowired
+    private MenuService menuService;
     @GetMapping("/{restaurantId}")
-    public ResponseEntity<String> getMenu(@PathVariable("restaurantId") String restaurantId){
-        return null;
+    public ResponseEntity<Menu> getMenu(@PathVariable("restaurantId") String restaurantId){
+        Menu menu = menuService.getMenuByRestaurantId(restaurantId);
+        if(menu != null){
+            return new ResponseEntity<>(menu, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
+    // return
     @PostMapping("/{restaurantId}/{categoryId}")
     public ResponseEntity<String> addDishByCategory(@PathVariable("restaurantId") String restaurantId,@PathVariable("categoryId") String categoryId, @RequestBody Dish dish){
         return null;
