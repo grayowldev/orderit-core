@@ -1,11 +1,13 @@
 package biz.orderit.orderit.sevice;
 
-import biz.orderit.orderit.pojo.Menu;
-import biz.orderit.orderit.pojo.Restaurant;
+import biz.orderit.orderit.pojo.*;
+import biz.orderit.orderit.repository.MenuCategoryListRepository;
 import biz.orderit.orderit.repository.RestaurantRepository;
+import jdk.jfr.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,6 +16,8 @@ public class MenuService {
     // get menu
     @Autowired
     private RestaurantRepository restaurantRepository;
+    @Autowired
+    private MenuCategoryListRepository menuCategoryListRepository;
 
     public Menu getMenuByRestaurantId(String id) {
         Optional<Restaurant> restaurantOptional = restaurantRepository.findRestaurantById(id);
@@ -25,9 +29,38 @@ public class MenuService {
         }
     }
 
-    //TODO addMenu - Name: Abhimanyu
+    public String addDishToRestaurantMenu(String restaurantId, String categoryId, Dish dish){
 
-    //TODO deleteMenuById - Name: Abhimanyu
+        Optional<MenuCategoryList> categoryListOp
+                = menuCategoryListRepository.findMenuCategoryListByCategoryIdAndRestaurantId(categoryId,restaurantId);
+
+        if (categoryListOp.isPresent()){
+
+            MenuCategory menuCategory = new MenuCategory(categoryListOp.get().getName());
+            menuCategory.addDish(dish);
+            Optional<Restaurant> rest = restaurantRepository.findRestaurantById(restaurantId);
+
+            if (rest.isPresent()) {
+                Restaurant newRest = rest.get();
+                newRest.addDish(menuCategory);
+                restaurantRepository.save(newRest);
+                return "Successfully Added\n" + rest.toString();
+            } else {
+                return "Failed to add :(";
+            }
+
+        } else {
+            return "Menu doesn't exists !";
+        }
+    }
+
+//    TODO deleteMenuById - Name: Abhimanyu
+//    public String deleteMenu(String id) {
+//        Optional<Restaurant> rest = restaurantRepository.findRestaurantById(id);
+//        if (rest.isPresent()) {
+//            rest.get().
+//        }
+//    }
 
     //TODO updateMenuById - Name: Abhimanyu
 }

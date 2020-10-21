@@ -45,13 +45,13 @@ public class Restaurant {
         this.address = address;
     }
 
-    public Menu getMenu() {
-        return menu;
-    }
+    public Menu getMenu() { return menu; }
 
     public void setMenu(Menu menu) {
         this.menu = menu;
     }
+
+    public void addDish(MenuCategory menuCategory) { this.menu.addMenuCategory(menuCategory); }
 
     @Override
     public String toString() {

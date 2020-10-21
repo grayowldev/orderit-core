@@ -2,6 +2,7 @@ package biz.orderit.orderit.apiController;
 
 import biz.orderit.orderit.pojo.Dish;
 import biz.orderit.orderit.pojo.Menu;
+import biz.orderit.orderit.pojo.Restaurant;
 import biz.orderit.orderit.sevice.MenuCategoryListService;
 import biz.orderit.orderit.sevice.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ public class MenuController {
     // return responseEntity : A list of menu category objects - getMenuByRestaurantId() from service
     @Autowired
     private MenuService menuService;
+
     @GetMapping("/{restaurantId}")
     public ResponseEntity<Menu> getMenu(@PathVariable("restaurantId") String restaurantId){
         Menu menu = menuService.getMenuByRestaurantId(restaurantId);
@@ -26,7 +28,16 @@ public class MenuController {
         }
     }
 
-    //TODO addMenu - Name: Abhimanyu
+    public ResponseEntity<String> addDishToRestaurantMenu(@PathVariable("restaurantId") String restaurantId,@PathVariable("categoryId") String categoryId, @RequestBody Dish dish) {
+        String dishAdded = menuService.addDishToRestaurantMenu(restaurantId, categoryId, dish);
+        if(dishAdded != null){
+            return new ResponseEntity<>(dishAdded, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    //TODO: Delete dish by id
 
     //TODO deleteMenuById - Name: Abhimanyu
 
@@ -42,6 +53,4 @@ public class MenuController {
     public ResponseEntity<String> updateDishByCategory(@PathVariable("restaurantId") String restaurantId,@PathVariable("categoryId") String categoryId, @RequestBody Dish dish){
         return null;
     }
-
-    //TODO: Delete dish by id
 }

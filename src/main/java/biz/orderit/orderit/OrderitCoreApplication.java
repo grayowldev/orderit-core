@@ -5,6 +5,7 @@ import biz.orderit.orderit.repository.*;
 import biz.orderit.orderit.sevice.AuthService;
 import biz.orderit.orderit.sevice.CartService;
 import biz.orderit.orderit.sevice.MenuCategoryListService;
+import biz.orderit.orderit.sevice.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -40,6 +41,9 @@ public class OrderitCoreApplication implements CommandLineRunner {
 
     @Autowired
     private CartRepository cartRepository;
+
+    @Autowired
+    private MenuService menuService;
 
 
     public static void main(String[] args) {
@@ -109,7 +113,8 @@ public class OrderitCoreApplication implements CommandLineRunner {
         // _____________________________________
         // _____________________________________
         // _____________________________________
-
+        Dish dish3 = new Dish("Halal", "Gyro", 9.00);
+        System.out.println(menuService.addDishToRestaurantMenu("1", "5f8e6c1014ced779da3cbaeb", dish3));
 //
 //        Restaurant restaurant = new Restaurant("1","Joes",new Address());
 //        restaurant.setMenu(menu);
