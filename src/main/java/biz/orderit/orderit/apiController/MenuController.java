@@ -24,7 +24,7 @@ public class MenuController {
         if(menu != null){
             return new ResponseEntity<>(menu, HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>((Menu) null, HttpStatus.NOT_FOUND);
         }
     }
 
@@ -33,7 +33,7 @@ public class MenuController {
         if(dishAdded != null){
             return new ResponseEntity<>(dishAdded, HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Dish was not added.", HttpStatus.NOT_FOUND);
         }
     }
 
