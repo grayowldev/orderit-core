@@ -10,7 +10,7 @@ public class Dish {
 
     @Id
     String id;
-    String name, description,image,category,originCategory,origin;
+    String name, description,image,originCategory,origin;
     Double price;
     Integer quantity;
     HashMap<String,Double> options;
@@ -54,14 +54,6 @@ public class Dish {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     public String getOriginCategory() {
