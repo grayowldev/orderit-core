@@ -1,9 +1,11 @@
 package biz.orderit.orderit.sevice;
 
 import biz.orderit.orderit.pojo.*;
+import biz.orderit.orderit.repository.DishRepository;
 import biz.orderit.orderit.repository.MenuCategoryListRepository;
 import biz.orderit.orderit.repository.RestaurantRepository;
 import jdk.jfr.Category;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +18,12 @@ public class MenuService {
     // get menu
     @Autowired
     private RestaurantRepository restaurantRepository;
+
     @Autowired
     private MenuCategoryListRepository menuCategoryListRepository;
+
+    @Autowired
+    private DishRepository dishRepository;
 
     public Menu getMenuByRestaurantId(String id) {
         Optional<Restaurant> restaurantOptional = restaurantRepository.findRestaurantById(id);
@@ -35,8 +41,13 @@ public class MenuService {
                 = menuCategoryListRepository.findMenuCategoryListByCategoryIdAndRestaurantId(categoryId,restaurantId);
 
         if (categoryListOp.isPresent()){
+            MenuCategoryList category = categoryListOp.get();
+            MenuCategory menuCategory = new MenuCategory(category.getName(),category.getCategoryId());
 
-            MenuCategory menuCategory = new MenuCategory(categoryListOp.get().getName());
+//            dishRepository.save(dish);
+//            Dish databaseDish = dishRepository.findDishByName(dish.getName()).get();
+            ObjectId dishId = new ObjectId();
+            dish.setId(dishId.toString());
             menuCategory.addDish(dish);
             Optional<Restaurant> rest = restaurantRepository.findRestaurantById(restaurantId);
 

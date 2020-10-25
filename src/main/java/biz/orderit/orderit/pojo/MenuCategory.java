@@ -21,6 +21,12 @@ public class MenuCategory {
         this.dishList = new ArrayList<Dish>();
     }
 
+    public MenuCategory(String name, String id) {
+        this.name = name;
+        this.id = id;
+        this.dishList = new ArrayList<Dish>();
+    }
+
     public String getId() {
         return id;
     }

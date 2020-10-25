@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.HashMap;
 
-@Document
+@Document(collection = "dish_inventory")
 public class Dish {
 
     @Id

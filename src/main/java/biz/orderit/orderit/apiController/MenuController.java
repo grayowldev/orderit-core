@@ -28,6 +28,7 @@ public class MenuController {
         }
     }
 
+    @PostMapping("/{restaurantId}/{categoryId}")
     public ResponseEntity<String> addDishToRestaurantMenu(@PathVariable("restaurantId") String restaurantId,@PathVariable("categoryId") String categoryId, @RequestBody Dish dish) {
         String dishAdded = menuService.addDishToRestaurantMenu(restaurantId, categoryId, dish);
         if(dishAdded != null){
@@ -43,11 +44,11 @@ public class MenuController {
 
     //TODO updateMenuById - Name: Abhimanyu
 
-    // return
-    @PostMapping("/{restaurantId}/{categoryId}")
-    public ResponseEntity<String> addDishByCategory(@PathVariable("restaurantId") String restaurantId,@PathVariable("categoryId") String categoryId, @RequestBody Dish dish){
-        return null;
-    }
+//    // return
+//    @PostMapping("/{restaurantId}/{categoryId}")
+//    public ResponseEntity<String> addDishByCategory(@PathVariable("restaurantId") String restaurantId,@PathVariable("categoryId") String categoryId, @RequestBody Dish dish){
+//        return null;
+//    }
 
     @PutMapping("/{restaurantId}/{categoryId}")
     public ResponseEntity<String> updateDishByCategory(@PathVariable("restaurantId") String restaurantId,@PathVariable("categoryId") String categoryId, @RequestBody Dish dish){

@@ -115,6 +115,10 @@ public class OrderitCoreApplication implements CommandLineRunner {
         // _____________________________________
         Dish dish3 = new Dish("Halal", "Gyro", 9.00);
         System.out.println(menuService.addDishToRestaurantMenu("1", "5f8e6c1014ced779da3cbaeb", dish3));
+
+        System.out.println("__________________________________________");
+        System.out.println(menuService.getMenuByRestaurantId("1"));
+
 //
 //        Restaurant restaurant = new Restaurant("1","Joes",new Address());
 //        restaurant.setMenu(menu);
