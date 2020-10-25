@@ -10,7 +10,7 @@ public class Dish {
 
     @Id
     String id;
-    String name, description,image,originCategory,origin;
+    String name, description,image,originCategory,origin, restauraantId;
     Double price;
     Integer quantity;
     HashMap<String,Double> options;
@@ -96,5 +96,11 @@ public class Dish {
         this.options = options;
     }
 
+    public String getRestauraantId() {
+        return restauraantId;
+    }
 
+    public void setRestauraantId(String restauraantId) {
+        this.restauraantId = restauraantId;
+    }
 }
