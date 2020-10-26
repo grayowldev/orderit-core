@@ -120,11 +120,7 @@ public class OrderitCoreApplication implements CommandLineRunner {
         System.out.println("__________________________________________");
         System.out.println(menuService.getMenuByRestaurantId("1"));
 
-//
-//        Restaurant restaurant = new Restaurant("1","Joes",new Address());
-//        restaurant.setMenu(menu);
-//        restaurantRepository.save(restaurant);
-//
+
 //
 //
 //
