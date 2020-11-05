@@ -42,16 +42,19 @@ public class DishInventoryController {
         }
     }
 
-    @PostMapping
-    public ResponseEntity<String> addDishToInverntory(@RequestBody Dish dish){
-        String status = dishInventoryService.addDishToInventory(dish);
+    @PostMapping("/{restaurantId}")
+    public ResponseEntity<String> addDishToInverntory(@RequestBody Dish dish, @PathVariable String restaurantId){
+        String status = dishInventoryService.addDishToInventory(dish, restaurantId);
         if (status != null){
             return new ResponseEntity<>(
                     status,
                     HttpStatus.OK
             );
         }else {
-            return null;
+            return new ResponseEntity<>(
+                    status,
+                    HttpStatus.NOT_FOUND
+            );
         }
     }
 

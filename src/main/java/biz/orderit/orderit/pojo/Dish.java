@@ -96,11 +96,11 @@ public class Dish {
         this.options = options;
     }
 
-    public String getRestauraantId() {
+    public String getRestaurantId() {
         return restaurantId;
     }
 
-    public void setRestauraantId(String restauraantId) {
-        this.restaurantId = restauraantId;
+    public void setRestaurantId(String restaurantId) {
+        this.restaurantId = restaurantId;
     }
 }
