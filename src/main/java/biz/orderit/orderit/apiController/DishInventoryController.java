@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/DishList")
 public class DishInventoryController {
@@ -16,20 +17,17 @@ public class DishInventoryController {
     @Autowired
     private DishInventoryService dishInventoryService;
 
-    @GetMapping("/{restaurantId}")
+    @GetMapping("ByRestaurantId/{restaurantId}")
     public ResponseEntity<List<Dish>> getDishInventory(@PathVariable String restaurantId){
         List<Dish> dishlist = dishInventoryService.getDishInventory(restaurantId);
         if (dishlist != null){
-            return new ResponseEntity<>(
-                    dishlist,
-                    HttpStatus.OK
-            );
-        }else {
+            return new ResponseEntity<>(dishlist, HttpStatus.OK);
+        } else {
             return null;
         }
     }
 
-    @GetMapping("/{dishId}")
+    @GetMapping("ByDishId/{dishId}")
     public ResponseEntity<Dish> getDishById(@PathVariable String dishId){
         Dish dish = dishInventoryService.getDishById(dishId);
         if (dish != null){
