@@ -1,16 +1,14 @@
 package biz.orderit.orderit.apiController;
-
-
 import biz.orderit.orderit.pojo.MenuCategoryList;
 import biz.orderit.orderit.sevice.MenuCategoryListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/categoryList")
 public class MenuCategoryListController {
@@ -44,7 +42,7 @@ public class MenuCategoryListController {
         );
     }
 
-    // TODO: 10/19/20 Update category by restaurant id and category id
+    // TODO: 10/19/20 Update category by restaurant id and category id - 16 days ago lul
 
     // TODO: 10/19/20 Delete category by restaurant id and category id
 }
