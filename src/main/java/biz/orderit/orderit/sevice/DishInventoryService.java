@@ -5,7 +5,6 @@ import biz.orderit.orderit.pojo.Restaurant;
 import biz.orderit.orderit.repository.DishInventoryRepository;
 import biz.orderit.orderit.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -59,11 +58,13 @@ public class DishInventoryService {
     }
 
     public String updateDish(Dish dish){
-        return null;
+        dishInventoryRepository.save(dish);
+        return "dish updated";
     }
 
     public String deleteDishById(Dish dish){
-        return null;
+        dishInventoryRepository.deleteById(dish.getId());
+        return "dish deleted";
     }
 
 
