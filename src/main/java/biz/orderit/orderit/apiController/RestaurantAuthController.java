@@ -26,6 +26,4 @@ public class RestaurantAuthController {
         System.out.println(restaurantAuth.getPassword());
         return authService.getRestaurantUser(restaurantAuth);
     }
-
-
 }
