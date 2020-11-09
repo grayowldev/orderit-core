@@ -48,7 +48,6 @@ public class DishInventoryService {
     }
 
     public String addDishToInventory(Dish dish, String restaurantId){
-        String accepted = "Dish was successfully added to inventory";
         Optional<Restaurant> restaurant = restaurantRepository.findRestaurantById(restaurantId);
         if(restaurant.isEmpty()){
             return null;
