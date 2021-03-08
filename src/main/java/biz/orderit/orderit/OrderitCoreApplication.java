@@ -54,24 +54,74 @@ public class OrderitCoreApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        // Generating Sample Restaurant
 
+        // Generating Sample Restaurant
+        Restaurant sumRamen = new Restaurant("100", "Sum Ramen", new Address("188", "Essex Street", "Millburn","NJ","07041"));
         Restaurant ziggs = new Restaurant("1","Zigg's",new Address("14","JFK Blvd","New York","NY","10001"));
 
-        // Add sample category list
+        // Generate Sample Dishes
+        Dish edamame,karaage,gyoza,misoRamen,beefRamen,seafoodRamen;
+        edamame = new Dish("Edamame","Toasted edamame w/ sea salt and butter.",5.50);
+        karaage = new Dish("Karaage Chicken Wings","Fried crispy chicken wing w/ sweet garlic soy sauce or spicy mayo.",9.00);
+        gyoza = new Dish("Pork or Chicken Gyoza","Pan fried dumping w/ special garlic sauce.",8.00);
+        misoRamen = new Dish("Miso Ramen","Pork chashu or chicken w/ bean sprouts, wood ear mushroom, scallion, Nori and fried onion Complemented by chicken broth.",15.00);
+        beefRamen = new Dish("Beef Ramen","Slow cooked beef short ribs, spinach, bamboo shoots and leek. Complemented by beef broth.",17.00);
+        seafoodRamen = new Dish("Seafood Ramen","Shrimp, calamari, clam and scallop grilled w/ butter and garlic. Served w/ spinach, corn and leeks.",20.00);
 
-        MenuCategoryList unassigned = new MenuCategoryList(ziggs.getId(), "Unassigned");
-        MenuCategoryList breakfast = new MenuCategoryList(ziggs.getId(), "Breakfast");
-        String r1 = menuCategoryListService.addCategoryToList(unassigned);
-        String r2 = menuCategoryListService.addCategoryToList(breakfast);
-        System.out.println(r1);
-        System.out.println(r2);
+        // Generate Menu Categories
+        MenuCategoryList appetizer = new MenuCategoryList(sumRamen.getId(),"Appetizer");
+        MenuCategoryList ramen = new MenuCategoryList(sumRamen.getId(), "Ramen (House-made Broth)");
+        menuCategoryListService.addCategoryToList(appetizer);
+        menuCategoryListService.addCategoryToList(ramen);
 
-        ArrayList<MenuCategoryList> categoryList = (ArrayList<MenuCategoryList>) menuCategoryListService.getCategoryListByRestaurantId(ziggs.getId());
+        MenuCategory c1 = new MenuCategory(appetizer.getName());
+        MenuCategory c2 = new MenuCategory(ramen.getName());
 
-        for (MenuCategoryList cat : categoryList){
-            System.out.println(cat);
+        c1.addDish(edamame);
+        c1.addDish(karaage);
+        c1.addDish(gyoza);
+        c2.addDish(misoRamen);
+        c2.addDish(beefRamen);
+        c2.addDish(seafoodRamen);
+
+        Menu sumRamenMenu = new Menu(sumRamen.getId());
+        sumRamenMenu.addMenuCategory(c1);
+        sumRamenMenu.addMenuCategory(c2);
+
+        sumRamen.setMenu(sumRamenMenu);
+        restaurantRepository.save(sumRamen);
+
+//
+//        menuService.addDishToRestaurantMenu("100","604552691e1ddb33c432b447",edamame);
+//        menuService.addDishToRestaurantMenu("100","604552691e1ddb33c432b447",karaage);
+//        menuService.addDishToRestaurantMenu("100", "604552691e1ddb33c432b447",gyoza);
+//        menuService.addDishToRestaurantMenu("100","604552691e1ddb33c432b448",misoRamen);
+//        menuService.addDishToRestaurantMenu("100","604552691e1ddb33c432b448",beefRamen);
+//        menuService.addDishToRestaurantMenu("100","604552691e1ddb33c432b448",seafoodRamen);
+
+
+
+
+
+        ArrayList<MenuCategoryList> categoryList = (ArrayList<MenuCategoryList>) menuCategoryListService.getCategoryListByRestaurantId(sumRamen.getId());
+
+        for (MenuCategoryList category: categoryList){
+            System.out.println(category);
         }
+
+//        // Add sample category list
+//        MenuCategoryList unassigned = new MenuCategoryList(ziggs.getId(), "Unassigned");
+//        MenuCategoryList breakfast = new MenuCategoryList(ziggs.getId(), "Breakfast");
+//        String r1 = menuCategoryListService.addCategoryToList(unassigned);
+//        String r2 = menuCategoryListService.addCategoryToList(breakfast);
+//        System.out.println(r1);
+//        System.out.println(r2);
+//
+//        ArrayList<MenuCategoryList> categoryList = (ArrayList<MenuCategoryList>) menuCategoryListService.getCategoryListByRestaurantId(ziggs.getId());
+//
+//        for (MenuCategoryList cat : categoryList){
+//            System.out.println(cat);
+//        }
 
 
         Dish dish1 = new Dish("No.1 Shoyu",
@@ -121,54 +171,6 @@ public class OrderitCoreApplication implements CommandLineRunner {
         System.out.println(menuService.getMenuByRestaurantId("1"));
 
 
-//
-//
-//
-//
-//        Customer c1 = new Customer("1", "Sam Smith",new Address("7", "Westminster Ave", "London",null,null));
-//        Customer c2 = new Customer("2", "Elon Musk", new Address("14","JFK Blvd","New York","NY","10001"));
-//        RestaurantAuth user = new RestaurantAuth("1","abc@email.com","123456");
-////
-//        customerRepository.save(c1);
-//        customerRepository.save(c2);
-////
-//        System.out.println("\n****************************\n");
-////
-//        List<Customer> customers = customerRepository.findAll();
-////
-//        for (Customer c: customers)
-//            System.out.println(c.toString());
-//
-//        String s = authService.createRestaurantUser(user);
-//        System.out.println(s);
-//
-//
-//
-//
-//        // ______________________________________________
-//        System.out.println("\n");
-//        Optional<RestaurantAuth> name = restaurantAuthRepository.findRestaurantAuthById("877393");
-//        System.out.println(name.toString());
-//
-//        // ______________________________________________
-//        System.out.println("\n");
-//        Optional<RestaurantAuth> name2 = restaurantAuthRepository.findRestaurantAuthByEmailAndAndPassword("email@email.com", "password123456");
-//        System.out.println(name2);
-//        System.out.println(name2.toString());
-//        if(name2.isEmpty())
-//            System.out.println("this is empty");
-//
-//
-//
-//        Optional<Restaurant> r = restaurantRepository.findById("1");
-//
-//        if (!r.isEmpty()){
-//            Restaurant x = r.get();
-//            for (MenuCategory menuCategory : x.getMenu().getCategories()){
-//                System.out.println(menuCategory);
-//            }
-////            System.out.println(x.getMenu());
-//        }
 
 
     }

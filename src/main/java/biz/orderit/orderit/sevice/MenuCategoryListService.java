@@ -33,7 +33,15 @@ public class MenuCategoryListService {
     }
 
     // TODO: 10/19/20 Add delete category
+    public String deleteCategoryListByCategoryId(String categoryId){
+        menuCategoryListRepository.deleteById(categoryId);
+        return "Category with id "+ categoryId + " was deleted successfully";
+    }
 
     // TODO: 10/19/20 Update category in list
+    public String updateCategoryListByCategoryId(String restaurantId, String categoryId, MenuCategoryList menuCategoryList){
+        return null;
+    }
+
 
 }

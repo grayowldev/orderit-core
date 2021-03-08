@@ -31,8 +31,8 @@ public class MenuCategoryListController {
     }
 
     // TODO: 10/19/20 Add category by restaurant id
-    @PostMapping("{restaurantId}/{categoryName}")
-    public ResponseEntity<String> addCategory(@PathVariable String restaurantId, @PathVariable String categoryName){
+    @PostMapping("/{restaurantId}")
+    public ResponseEntity<String> addCategory(@PathVariable String restaurantId, @RequestParam String categoryName){
         MenuCategoryList menuCategoryList = new MenuCategoryList();
         menuCategoryList.setRestaurantId(restaurantId);
         menuCategoryList.setName(categoryName);
@@ -43,6 +43,34 @@ public class MenuCategoryListController {
     }
 
     // TODO: 10/19/20 Update category by restaurant id and category id - 16 days ago lul
+    @PutMapping("/{restaurantId}/{categoryId}")
+    public ResponseEntity<String> updateCategory(@PathVariable String restaurantId, @PathVariable String categoryId){
+        return null;
 
-    // TODO: 10/19/20 Delete category by restaurant id and category id
+    }
+
+
+    @DeleteMapping("/{restaurantId}/{categoryId}")
+    public ResponseEntity<String> deleteCategory(@PathVariable String restaurantId, @PathVariable String categoryId){
+
+        List<MenuCategoryList> menuCategoryLists = menuCategoryListService.getCategoryListByRestaurantId(restaurantId);
+        String returnStr = null;
+        if(menuCategoryLists != null){
+            boolean present = false;
+            for (MenuCategoryList categoryList: menuCategoryLists ){
+                if (categoryList.getCategoryId().equals(categoryId)){
+                    present = true;
+                    returnStr = menuCategoryListService.deleteCategoryListByCategoryId(categoryId);
+                    break;
+                }
+            }
+            if (!present){
+                returnStr = "Category not in list";
+            }
+        }
+        return new ResponseEntity<>(
+                returnStr,
+                HttpStatus.OK
+        );
+    }
 }

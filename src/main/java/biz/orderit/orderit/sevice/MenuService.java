@@ -35,11 +35,11 @@ public class MenuService {
 
     public String addDishToRestaurantMenu(String restaurantId, String categoryId, Dish dish){
 
-        Optional<MenuCategoryList> categoryListOp
+        Optional<MenuCategoryList> categoryListOpt
                 = menuCategoryListRepository.findMenuCategoryListByCategoryIdAndRestaurantId(categoryId,restaurantId);
 
-        if (categoryListOp.isPresent()){
-            MenuCategoryList category = categoryListOp.get();
+        if (categoryListOpt.isPresent()){
+            MenuCategoryList category = categoryListOpt.get();
             MenuCategory menuCategory = new MenuCategory(category.getName(),category.getCategoryId());
 
 //            dishInventoryRepository.save(dish);
