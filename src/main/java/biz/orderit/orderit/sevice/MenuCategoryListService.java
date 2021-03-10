@@ -38,10 +38,14 @@ public class MenuCategoryListService {
         return "Category with id "+ categoryId + " was deleted successfully";
     }
 
-    // TODO: 10/19/20 Update category in list
-    public String updateCategoryListByCategoryId(String restaurantId, String categoryId, MenuCategoryList menuCategoryList){
-        return null;
+    public String updateCategoryList(MenuCategoryList menuCategoryList){
+        menuCategoryListRepository.save(menuCategoryList);
+        Optional<MenuCategoryList> categoryList = menuCategoryListRepository.findMenuCategoryListByCategoryIdAndRestaurantId(menuCategoryList.getCategoryId(),menuCategoryList.getRestaurantId());
+        if (categoryList.isEmpty()){
+            return "Category not found";
+        } else {
+            return "updated category with id:" + menuCategoryList.getCategoryId();
+        }
     }
-
 
 }

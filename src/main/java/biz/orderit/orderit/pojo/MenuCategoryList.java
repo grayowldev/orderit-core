@@ -40,8 +40,16 @@ public class MenuCategoryList {
         this.name = name;
     }
 
+    public MenuCategoryList(String restaurantId, String name, String categoryId){
+        this.restaurantId = restaurantId;
+        this.name = name;
+        this.categoryId = categoryId;
+    }
+
     public MenuCategoryList() {
     }
+
+
 
     @Override
     public String toString() {

@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.ArrayList;
+
 import java.util.List;
 
 @CrossOrigin
@@ -42,13 +42,14 @@ public class MenuCategoryListController {
         );
     }
 
-    // TODO: 10/19/20 Update category by restaurant id and category id - 16 days ago lul
     @PutMapping("/{restaurantId}/{categoryId}")
-    public ResponseEntity<String> updateCategory(@PathVariable String restaurantId, @PathVariable String categoryId){
-        return null;
-
+    public ResponseEntity<String> updateCategory(@PathVariable String restaurantId, @PathVariable String categoryId, @RequestParam String categoryName){
+        MenuCategoryList menuCategoryList = new MenuCategoryList(restaurantId, categoryName,categoryId);
+        return new ResponseEntity<>(
+                menuCategoryListService.updateCategoryList(menuCategoryList),
+                HttpStatus.OK
+        );
     }
-
 
     @DeleteMapping("/{restaurantId}/{categoryId}")
     public ResponseEntity<String> deleteCategory(@PathVariable String restaurantId, @PathVariable String categoryId){
